@@ -11,7 +11,7 @@ SRC_URI = " \
     file://ocaml-redirect \
     "
 
-SRCREV = "fdb4f8c3e303bc55e785a3b816e423180ae5e8f8"
+SRCREV = "d26e97239fd862574ca37bed3f270cfb5a777336"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1d53f1a1639ae7a362cf05c3a6c466c2"
 
