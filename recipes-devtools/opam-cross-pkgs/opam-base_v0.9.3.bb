@@ -2,7 +2,7 @@ DESCRIPTION = "Full standard library replacement for OCaml"
 SECTION = "devel"
 LICENSE = "Apache-2.0"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://0001-build-gen-exe-bytecode-only.patch \
     "
 
@@ -11,7 +11,7 @@ inherit opam_install
 
 #DEPENDS += " ocaml-native opam-dune"
 DEPENDS += " opam-dune"
-#DEPENDS_remove = "ocaml-cross-${TARGET_ARCH}"
+#DEPENDS:remove = "ocaml-cross-${TARGET_ARCH}"
 
 
 do_patch () {

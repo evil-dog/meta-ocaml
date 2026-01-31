@@ -11,7 +11,7 @@ DEPENDS += " \
     opam-ppx-deriving-protobuf \
     "
 
-DEPENDS_remove = " \
+DEPENDS:remove = " \
     ocaml-cross-${TARGET_ARCH} \
     "
 

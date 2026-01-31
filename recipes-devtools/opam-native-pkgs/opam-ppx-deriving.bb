@@ -18,7 +18,7 @@ DEPENDS += " \
     opam-ppx-tools \
     opam-result \
     "
-DEPENDS_remove = " \
+DEPENDS:remove = " \
     ocaml-cross-${TARGET_ARCH} \
     "
 

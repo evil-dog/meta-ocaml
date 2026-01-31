@@ -11,7 +11,7 @@ DEPENDS += " \
     opam-cppo-ocamlbuild \
     "
 
-DEPENDS_remove = " \
+DEPENDS:remove = " \
     ocaml-cross-${TARGET_ARCH} \
     "
 

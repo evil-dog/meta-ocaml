@@ -42,7 +42,7 @@ EXTRA_OECONF = "\
     --prefix=${prefix} \
     "
 
-do_compile_prepend () {
+do_compile:prepend () {
     oe_runmake lib-ext
 }
 
@@ -57,6 +57,6 @@ do_install () {
         --no-setup
 }
 
-sysroot_stage_all_append () {
+sysroot_stage_all:append () {
     sysroot_stage_dir ${D}${prefix}/bin ${SYSROOT_DESTDIR}${prefix}/bin
 }

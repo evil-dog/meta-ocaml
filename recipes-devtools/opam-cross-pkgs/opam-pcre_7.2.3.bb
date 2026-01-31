@@ -2,7 +2,7 @@ DESCRIPTION = "Bindings to the Perl Compatibility Regular Expressions library"
 SECTION = "devel"
 LICENSE = "LGPLv2.1"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://0001-add-pkg-config-option.patch \
     file://0002-add-patch-to-opam.patch \
     "
@@ -58,7 +58,7 @@ do_patch () {
 
 inherit opam_install
 
-do_install_prepend () {
+do_install:prepend () {
     export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${STAGING_DIR_HOST}/usr/lib/pkgconfig"
 }
 

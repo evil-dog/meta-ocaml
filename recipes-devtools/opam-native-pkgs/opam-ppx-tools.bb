@@ -11,7 +11,7 @@ OPAM_PKGNAME_OVERRIDE = "ppx_tools"
 # executables from this package run on the host system package, therefore we need
 # to include ocaml-native instead of ocaml-cross
 DEPENDS += " ocaml-native"
-DEPENDS_remove = "ocaml-cross-${TARGET_ARCH}"
+DEPENDS:remove = "ocaml-cross-${TARGET_ARCH}"
 
 
 OPAM_VERBOSE = "1"
