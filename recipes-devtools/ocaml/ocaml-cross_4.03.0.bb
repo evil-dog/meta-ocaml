@@ -5,7 +5,7 @@ LICENSE = "QPL"
 inherit cross
 
 SRC_URI = " \
-    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.03.0 \
+    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.03.0;nobranch=1 \
     file://0001-add-sysroot-configure-option.patch \
     file://0010-add-arm32-cross-target.patch \
     file://ocaml-redirect \

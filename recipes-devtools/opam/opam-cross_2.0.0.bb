@@ -3,7 +3,7 @@ SECTION = "devel"
 LICENSE = "GPLv2"
 
 SRC_URI = " \
-    git://github.com/ocaml/opam.git;protocol=https;tag=2.0.0 \
+    git://github.com/ocaml/opam.git;protocol=https;tag=2.0.0;nobranch=1 \
     file://0001-jbuilder-pathfix.patch \
     "
 
