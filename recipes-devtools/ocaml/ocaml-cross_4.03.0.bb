@@ -29,6 +29,10 @@ DEPENDS += " \
 
 SHARED_D = "${TMPDIR}/work-shared/ocaml/ocaml-${PV}-${PR}/${TARGET_SYS}"
 
+# Fix for GCC 10+ which uses -fno-common by default
+# OCaml 4.03.0 has multiple definitions that need -fcommon
+CFLAGS:append = " -fcommon"
+
 do_configure () {
     cd ${S}
     ./configure  \

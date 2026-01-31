@@ -14,6 +14,10 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1d53f1a1639ae7a362cf05c3a6c466c2"
 
 S = "${WORKDIR}/git"
 
+# Fix for GCC 10+ which uses -fno-common by default
+# OCaml 4.03.0 has multiple definitions that need -fcommon
+CFLAGS:append = " -fcommon"
+
 DEPENDS += " ocaml-native"
 
 PACKAGES = "${PN} ${PN}-runtime"
