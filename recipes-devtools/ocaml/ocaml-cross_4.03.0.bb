@@ -5,14 +5,13 @@ LICENSE = "QPL"
 inherit cross
 
 SRC_URI = " \
-    git://github.com/ocaml/ocaml.git;protocol=https;branch=4.03 \
+    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.03.0 \
     file://0001-add-sysroot-configure-option.patch \
     file://0010-add-arm32-cross-target.patch \
     file://ocaml-redirect \
     "
 
-# Tag 4.03.0
-SRCREV = "2c13f84831ee1bf1e1838b1e8d48bfe0a0818b00"
+SRCREV = "fdb4f8c3e303bc55e785a3b816e423180ae5e8f8"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1d53f1a1639ae7a362cf05c3a6c466c2"
 
@@ -20,8 +19,6 @@ S = "${WORKDIR}/git"
 
 PROVIDES = "${TARGET_PREFIX}ocaml-cross"
 PN = "ocaml-cross-${TARGET_ARCH}"
-
-S = "${WORKDIR}/ocaml-${PV}"
 
 DEPENDS += " \
     coreutils-native \

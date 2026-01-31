@@ -3,12 +3,12 @@ SECTION = "devel"
 LICENSE = "GPLv2"
 
 SRC_URI = " \
-    git://github.com/ocaml/opam.git;protocol=https;branch=2.0 \
+    git://github.com/ocaml/opam.git;protocol=https;tag=2.0.0 \
     file://0001-jbuilder-pathfix.patch \
     "
 
 # Tag 2.0.0
-SRCREV = "a1e94ae85f62a85f7c1cc8f5daf6b02adb16df7c"
+SRCREV = "b2b8f1e32c355a1230d9be9c54a2f56750d3dc7f"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d9e77cf0b09010013d038358f983b42a"
 
@@ -22,8 +22,6 @@ inherit autotools-brokensep cross
 
 PROVIDES = "${TARGET_PREFIX}opam-cross"
 PN = "opam-cross-${TARGET_ARCH}"
-
-S = "${WORKDIR}/opam-${PV}"
 
 DEPENDS += " \
     ocaml-native \
