@@ -13,7 +13,7 @@ LICENSE = "LGPL"
 # their own.
 # TODO: double-check ARM values
 
-SRC_URI_append_arm = " \
+SRC_URI:append:arm = " \
     file://discover.exe_${TARGET_ARCH} \
     file://0001-replace-discover-exe.patch \
     "
@@ -27,7 +27,7 @@ do_patch () {
     # architecture-specific appends below
 }
 
-do_patch_append_arm () {
+do_patch:append:arm () {
     # copy replacement 'discover.exe'
     install -d -m 755 ${OPAM_ROOT}/repo/default/packages/lwt/lwt.${PV}/files
     install -m 755 ${WORKDIR}/discover.exe_${TARGET_ARCH} \
