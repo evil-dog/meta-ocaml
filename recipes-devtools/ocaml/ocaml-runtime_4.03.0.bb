@@ -16,6 +16,7 @@ S = "${WORKDIR}/git"
 
 # Fix for GCC 10+ which uses -fno-common by default
 # OCaml 4.03.0 has multiple definitions that need -fcommon
+BUILD_CFLAGS:append = " -fcommon"
 CFLAGS:append = " -fcommon"
 
 DEPENDS += " ocaml-native"
@@ -24,6 +25,7 @@ PACKAGES = "${PN} ${PN}-runtime"
 
 do_configure () {
     cd ${S}
+    export CFLAGS="${CFLAGS}"
     ./configure -prefix ${D} \
                 -bindir "\$(PREFIX)${bindir}" \
                 -target-bindir "${bindir}" \
