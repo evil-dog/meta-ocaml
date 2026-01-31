@@ -3,14 +3,16 @@ SECTION = "devel"
 LICENSE = "GPLv2"
 
 SRC_URI = " \
-    https://github.com/ocaml/opam/archive/${PV}.tar.gz \
+    git://github.com/ocaml/opam.git;protocol=https;branch=2.0 \
     file://0001-jbuilder-pathfix.patch \
     "
 
+# Tag 2.0.0
+SRCREV = "a1e94ae85f62a85f7c1cc8f5daf6b02adb16df7c"
+
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d9e77cf0b09010013d038358f983b42a"
 
-SRC_URI[md5sum] = "12b9835e43ff023a0b04a922f0ed9db5"
-SRC_URI[sha256sum] = "1e9b47a66a952571b32217c58d0c58d2d66706083969dcfa1e42a60ecce30121"
+S = "${WORKDIR}/git"
 
 # * opam has an autotools-style 'configure' file, but the makefile has been
 #   created manually.
