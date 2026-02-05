@@ -5,15 +5,15 @@ LICENSE = "QPL"
 inherit cross
 
 SRC_URI = " \
-    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.03.0;nobranch=1 \
+    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.14.2;nobranch=1 \
     file://0001-add-sysroot-configure-option.patch \
     file://0010-add-arm32-cross-target.patch \
     file://ocaml-redirect \
     "
 
-SRCREV = "d26e97239fd862574ca37bed3f270cfb5a777336"
+SRCREV = "8eb41f72ded84df884c3671734c947f612091f84"
 
-LIC_FILES_CHKSUM = "file://LICENSE;md5=1d53f1a1639ae7a362cf05c3a6c466c2"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4f72f33f302a53dc329f4d3819fe14f9"
 
 S = "${WORKDIR}/git"
 
@@ -29,14 +29,8 @@ DEPENDS += " \
 
 SHARED_D = "${TMPDIR}/work-shared/ocaml/ocaml-${PV}-${PR}/${TARGET_SYS}"
 
-# Fix for GCC 10+ which uses -fno-common by default
-# OCaml 4.03.0 has multiple definitions that need -fcommon
-BUILD_CFLAGS:append = " -fcommon"
-CFLAGS:append = " -fcommon"
-
 do_configure () {
     cd ${S}
-    export CFLAGS="${CFLAGS}"
     ./configure  \
                 -bindir ${SHARED_D}/usr/bin \
                 -target-bindir "/usr/bin" \
@@ -44,8 +38,7 @@ do_configure () {
                 -mandir ${SHARED_D}/usr/share/man \
                 -sysroot ${STAGING_DIR_TARGET} \
                 -host ${BUILD_SYS} \
-                -target ${TARGET_SYS} \
-                -no-graph
+                -target ${TARGET_SYS}
 }
 
 # we can't build the optional 'bootstrap' and 'opt.opt' targets when cross-compiling,

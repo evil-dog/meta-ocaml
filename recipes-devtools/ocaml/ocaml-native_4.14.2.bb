@@ -3,13 +3,13 @@ SECTION = "devel"
 LICENSE = "QPL"
 
 SRC_URI = " \
-    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.03.0;nobranch=1 \
+    git://github.com/ocaml/ocaml.git;protocol=https;tag=4.14.2;nobranch=1 \
     file://ocaml-redirect \
     "
 
-SRCREV = "d26e97239fd862574ca37bed3f270cfb5a777336"
+SRCREV = "8eb41f72ded84df884c3671734c947f612091f84"
 
-LIC_FILES_CHKSUM = "file://LICENSE;md5=1d53f1a1639ae7a362cf05c3a6c466c2"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4f72f33f302a53dc329f4d3819fe14f9"
 
 S = "${WORKDIR}/git"
 
@@ -24,21 +24,15 @@ inherit native
 
 SHARED_D = "${TMPDIR}/work-shared/ocaml/ocaml-${PV}-${PR}/${BUILD_SYS}"
 
-# Fix for GCC 10+ which uses -fno-common by default
-# OCaml 4.03.0 has multiple definitions that need -fcommon
-BUILD_CFLAGS:append = " -fcommon"
-CFLAGS:append = " -fcommon"
-
 do_configure () {
     cd ${S}
-    export CFLAGS="${CFLAGS}"
     ./configure  \
                 -bindir ${SHARED_D}/usr/bin \
                 -libdir ${SHARED_D}/usr/lib \
                 -mandir ${SHARED_D}/usr/share/man \
+                -docdir ${SHARED_D}/usr/share/doc/ocaml \
                 -host ${BUILD_SYS} \
-                -verbose \
-                -no-graph
+                -verbose
 }
 
 do_compile() {
@@ -68,8 +62,8 @@ do_install() {
     # ideally we would want direct symlinks to the work-shared binaries, however
     # Yocto does not allow absolute paths. So need to patch the path into a
     # shell script and symlink to the shell script instead.
-    sed -i "s|^WORK_SHARED_PATH.*|WORK_SHARED_PATH=${SHARED_D}/usr/bin|" ${WORKDIR}/ocaml-redirect
-    install -m 755 ${WORKDIR}/ocaml-redirect ${D}${bindir}
+    sed -i "s|^WORK_SHARED_PATH.*|WORK_SHARED_PATH=${SHARED_D}/usr/bin|" ${UNPACKDIR}/ocaml-redirect
+    install -m 755 ${UNPACKDIR}/ocaml-redirect ${D}${bindir}
     cd ${D}${bindir}
     for i in `ls ${SHARED_D}/usr/bin`; do
         # ocamlrun and ocamlyacc are the exception, they are relocatable
